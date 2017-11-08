@@ -1,6 +1,7 @@
 pub mod problems;
 mod fibonacci;
 mod maths;
+mod primes;
 mod reduce;
 
 #[cfg(test)]
@@ -35,5 +36,10 @@ mod tests {
     #[test]
     fn p06() {
         assert_eq!(problems::p6(), 25164150);
+    }
+
+    #[test]
+    fn p07() {
+        assert_eq!(problems::p7(), 104743);
     }
 }

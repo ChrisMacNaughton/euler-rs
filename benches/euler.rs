@@ -29,6 +29,10 @@ fn p06(bench: &mut Bencher) {
     bench.iter(|| problems::p6())
 }
 
+fn p07(bench: &mut Bencher) {
+    bench.iter(|| problems::p7())
+}
+
 benchmark_group!(
     benches,
     // p01,
@@ -36,7 +40,8 @@ benchmark_group!(
     // p03,
     // p04,
     // p05,
-    p06
+    // p06,
+    p07
 );
 
 benchmark_main!(benches);

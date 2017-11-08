@@ -2,6 +2,7 @@ use std::cmp::max;
 
 use fibonacci::Fibonacci;
 use maths::lcm;
+use primes;
 use reduce::Reduce;
 
 /// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
@@ -113,4 +114,27 @@ pub fn p6() -> u64 {
         sum_of_squares += i * i;
     }
     sum * sum - sum_of_squares
+}
+
+/// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+///
+/// What is the 10 001st prime number?
+pub fn p7() -> u64 {
+    // primes::nth(10_001)
+    let mut is_prime = [true; 120_000];
+    let length = is_prime.len();
+    primes::sieve(&mut is_prime);
+
+    let mut count = 1;
+    let mut i = 3;
+    while i <= length {
+        if is_prime[i] {
+            count += 1;
+            if count == 10001 {
+                return i as u64;
+            }
+        }
+        i += 2;
+    }
+    0
 }

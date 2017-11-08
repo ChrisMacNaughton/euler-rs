@@ -20,6 +20,8 @@ fn main() {
     time("p3", problems::p3);
     time("p4", problems::p4);
     time("p5", problems::p5);
+    time("p6", problems::p6);
+    time("p7", problems::p7);
     
 
     println!("Total {}", start.to( PreciseTime::now()));
