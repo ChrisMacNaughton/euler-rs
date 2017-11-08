@@ -21,12 +21,17 @@ fn p04(bench: &mut Bencher) {
     bench.iter(|| problems::p4())
 }
 
+fn p05(bench: &mut Bencher) {
+    bench.iter(|| problems::p5())
+}
+
 benchmark_group!(
     benches,
     // p01,
     // p02,
     // p03,
-    p04
+    // p04,
+    p05
 );
 
 benchmark_main!(benches);

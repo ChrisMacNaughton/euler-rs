@@ -1,6 +1,8 @@
 use std::cmp::max;
 
 use fibonacci::Fibonacci;
+use maths::lcm;
+use reduce::Reduce;
 
 /// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 /// 3, 5, 6 and 9. The sum of these multiples is 23.
@@ -86,6 +88,7 @@ pub fn p4() -> u32 {
     unreachable!()
 }
 
-// pub fn p5() -> u64 {
-//     0
-// }
+pub fn p5() -> u32 {
+    let max = 20;
+    (1 .. max + 1).reduce(|a, b| lcm(a, b)).unwrap()
+}

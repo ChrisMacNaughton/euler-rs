@@ -19,6 +19,7 @@ fn main() {
     time("p2", problems::p2);
     time("p3", problems::p3);
     time("p4", problems::p4);
+    time("p5", problems::p5);
     
 
     println!("Total {}", start.to( PreciseTime::now()));
