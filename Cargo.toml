@@ -1,0 +1,14 @@
+[package]
+name = "euler"
+version = "0.1.0"
+authors = ["Chris MacNaughton <chris@centaurisolutions.nl>"]
+
+[dependencies]
+time = "*"
+
+[dev-dependencies]
+bencher = "0.1.4"
+
+[[bench]]
+name = "euler"
+harness = false
