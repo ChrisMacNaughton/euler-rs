@@ -1,3 +1,5 @@
+use std::cmp::max;
+
 use fibonacci::Fibonacci;
 
 /// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
@@ -29,42 +31,61 @@ pub fn p1() -> u64 {
 /// By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 /// find the sum of the even-valued terms.
 pub fn p2() -> u64 {
-    let mut sum = 0;
     let fibs = Fibonacci {
         current: 1,
         last: 0,
     };
-    for number in fibs {
-        if number >= 4_000_000 {
-            break;
-        }
-        if number % 2 == 0 {
-            sum += number;
-        }
-    }
-    sum
+
+     fibs
+        .take_while(|i| *i < 4_000_000)
+        .filter(|i| i % 2 == 0)
+        .sum()
 }
 
-pub fn p2_flat() -> u64 {
-    let mut sum = 0;
-    let mut prev = 0;
-    let mut curr = 1;
-
-    loop {
-        curr = curr + prev;
-        prev = curr - prev;
-
-        if curr >= 4_000_000 {
-            break;
-        }
-        if curr % 2 == 0 {
-            sum += curr;
-        }
-    }
-    sum
-}
-
+/// The prime factors of 13195 are 5, 7, 13 and 29.
+///
+/// What is the largest prime factor of the number 600851475143 ?
 pub fn p3() -> u64 {
-    let mut num = 0;
-    num
+    let source = 600851475143;
+    let mut upper_limit = (source as f64).sqrt() as u64 + 1;
+    let mut target = source;
+    let mut factor = 2;
+    while factor <= upper_limit {
+        while target % factor == 0 {
+            target = target / factor;
+        }
+        factor += 1;
+        upper_limit = (target as f64).sqrt() as u64 + 1;
+    }
+    max(target, factor)
 }
+
+/// A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+///
+/// Find the largest palindrome made from the product of two 3-digit numbers.
+pub fn p4() -> u32 {
+    let palindrome_from = |mut n: u32| {
+        let mut p = n;
+        while n > 0 {
+            p *= 10;
+            p += n % 10;
+            n /= 10;
+        }
+        p
+    };
+    for i in (0..1000).rev() {
+        let p = palindrome_from(i);
+        let mut j = 999;
+        while j * j >= p {
+            if p % j == 0 {
+                return p;
+            }
+            j -= 1;
+        }
+    }
+    unreachable!()
+}
+
+// pub fn p5() -> u64 {
+//     0
+// }

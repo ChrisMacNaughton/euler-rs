@@ -12,3 +12,6 @@ bencher = "0.1.4"
 [[bench]]
 name = "euler"
 harness = false
+
+[profile.release]
+debug = true

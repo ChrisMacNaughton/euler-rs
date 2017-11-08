@@ -5,11 +5,11 @@ use time::PreciseTime;
 
 use euler::problems;
 
-fn time(name: &str, func: fn() -> u64) {
+fn time<T: Into<u64>>(name: &str, func: fn() -> T) {
     let start = PreciseTime::now();
     let n = func();
     let end = PreciseTime::now();
-    println!("{} ({}) answer: {}", name, start.to(end), n);
+    println!("{} ({}) answer: {}", name, start.to(end), n.into());
 }
 
 fn main() {
@@ -18,6 +18,8 @@ fn main() {
     time("p1", problems::p1);
     time("p2", problems::p2);
     time("p3", problems::p3);
+    time("p4", problems::p4);
+    
 
     println!("Total {}", start.to( PreciseTime::now()));
 }
