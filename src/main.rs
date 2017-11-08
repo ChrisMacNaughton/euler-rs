@@ -9,12 +9,15 @@ fn time(name: &str, func: fn() -> u64) {
     let start = PreciseTime::now();
     let n = func();
     let end = PreciseTime::now();
-    println!("{} ({}ms) answer: {}", name, start.to(end) * 1000, n);
+    println!("{} ({}) answer: {}", name, start.to(end), n);
 }
 
 fn main() {
-    // let start_all = PreciseTime::now();
+    let start = PreciseTime::now();
 
     time("p1", problems::p1);
     time("p2", problems::p2);
+    time("p3", problems::p3);
+
+    println!("Total {}", start.to( PreciseTime::now()));
 }

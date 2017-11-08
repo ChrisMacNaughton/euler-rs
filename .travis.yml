@@ -1,0 +1,16 @@
+sudo: false
+dist: trusty
+
+language: rust
+
+cache:
+  cargo: true
+  apt: true
+
+rust:
+  - stable
+
+script:
+  - cargo test
+  - cargo run --release
+  - cargo bench

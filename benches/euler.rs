@@ -13,9 +13,14 @@ fn p02(bench: &mut Bencher) {
     bench.iter(|| problems::p2())
 }
 
+fn p02_flat(bench: &mut Bencher) {
+    bench.iter(|| problems::p2_flat())
+}
+
 benchmark_group!(
     benches,
     p01,
-    p02
+    p02,
+    p02_flat
 );
 benchmark_main!(benches);

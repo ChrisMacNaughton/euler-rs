@@ -28,7 +28,6 @@ pub fn p1() -> u64 {
 ///
 /// By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 /// find the sum of the even-valued terms.
-#[allow(dead_code)]
 pub fn p2() -> u64 {
     let mut sum = 0;
     let fibs = Fibonacci {
@@ -44,4 +43,28 @@ pub fn p2() -> u64 {
         }
     }
     sum
+}
+
+pub fn p2_flat() -> u64 {
+    let mut sum = 0;
+    let mut prev = 0;
+    let mut curr = 1;
+
+    loop {
+        curr = curr + prev;
+        prev = curr - prev;
+
+        if curr >= 4_000_000 {
+            break;
+        }
+        if curr % 2 == 0 {
+            sum += curr;
+        }
+    }
+    sum
+}
+
+pub fn p3() -> u64 {
+    let mut num = 0;
+    num
 }
